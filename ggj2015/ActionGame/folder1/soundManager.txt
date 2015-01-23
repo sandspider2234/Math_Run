@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+namespace _2DSpaceShooter
+{
+   public class SoundManager
+    {
+       public SoundEffect playerShootSound, exploedSound,menuSound;
+       public Song bgMusic;
+       public SoundManager()
+       {
+           playerShootSound = exploedSound = menuSound= null;
+           bgMusic = null;
+       }
+       public void LoadContent(ContentManager Content)
+       {
+           playerShootSound = Content.Load<SoundEffect>("playershoot");
+           exploedSound = Content.Load<SoundEffect>("explode");
+           menuSound = Content.Load<SoundEffect>("epic1");
+           bgMusic = Content.Load<Song>("theme");
+
+       }
+      
+    }
+}

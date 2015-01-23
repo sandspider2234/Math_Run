@@ -1,0 +1,7 @@
+C:\Users\Barak\Documents\Math_Run\Math_Run\obj\x86\Debug\Math_Run.csprojResolveAssemblyReference.cache
+C:\Users\Barak\Documents\Math_Run\Math_Run\obj\x86\Debug\Math_Run.g.resources
+C:\Users\Barak\Documents\Math_Run\Math_Run\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Barak\Documents\Math_Run\Math_Run\bin\x86\Debug\Math_Run.exe
+C:\Users\Barak\Documents\Math_Run\Math_Run\bin\x86\Debug\Math_Run.pdb
+C:\Users\Barak\Documents\Math_Run\Math_Run\obj\x86\Debug\Math_Run.exe
+C:\Users\Barak\Documents\Math_Run\Math_Run\obj\x86\Debug\Math_Run.pdb

@@ -1,0 +1,132 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+
+namespace Math_Run
+{
+    public class Game1 : Microsoft.Xna.Framework.Game
+    {
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
+        Menu menu1=null;
+        SoundManager sm = new SoundManager();
+        
+        Level level1 = new Level(Content.Load<Texture2D>("level1"),50);
+        enum gameState
+        {
+            menu,
+           level1,
+            level2,
+            level3,
+            levels,
+            gameOver,
+            pause
+
+        }
+        gameState CurrnetGameState = gameState.menu;
+        public Game1()
+        {
+            graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 800;
+            Content.RootDirectory = "Content";
+        }
+
+      
+        protected override void Initialize()
+        {
+           
+
+            base.Initialize();
+        }
+
+       
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+           
+            menu1 = new Menu(Content.Load<Texture2D>("Play_Button"));
+
+            menu1.SetPosition(new Vector2(260, 360), new Vector2(300, 120));
+            menu1.LoadContent(Content);
+            IsMouseVisible = true;
+            // TODO: use this.Content to load your game content here
+        }
+
+        /// <summary>
+        /// UnloadContent will be called once per game and is the place to unload
+        /// all content.
+        /// </summary>
+        protected override void UnloadContent()
+        {
+            
+        }
+
+      
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Update(GameTime gameTime)
+        {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+                this.Exit();
+            MouseState mouse = Mouse.GetState();
+            Rectangle mouseRectangle1 = new Rectangle(mouse.X, mouse.Y, 1, 1);
+
+            switch (CurrnetGameState)
+            {
+                case gameState.menu:
+                    {
+                        menu1.Update(mouse);
+                        if (mouseRectangle1.Intersects(menu1.rectangle)&&mouse.LeftButton == ButtonState.Pressed)
+                        {
+                            
+                                CurrnetGameState = gameState.level1;
+                        }
+                        break;
+                    }
+
+                case gameState.level1:
+                    {
+                        
+                        break;
+                    }
+
+            }
+
+            base.Update(gameTime);
+        }
+
+       
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.Silver);
+
+            spriteBatch.Begin();
+            switch (CurrnetGameState)
+            {
+                case gameState.menu:
+                    {
+                        spriteBatch.Draw(Content.Load<Texture2D>("backround"), new Rectangle(0, 0, 800, 800), Color.White);
+                      //  spriteBatch.Draw(Content.Load<Texture2D>("Play_Button"), new Rectangle(260, 360, 300, 120), Color.White);
+                        menu1.Draw(spriteBatch);
+                        break;
+                    }
+                case gameState.level1:
+                    {
+                        break;
+                    }
+            }
+              spriteBatch.End();
+
+            base.Draw(gameTime);
+        }
+    }
+}
